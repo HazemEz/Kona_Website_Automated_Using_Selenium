@@ -100,11 +100,70 @@ public class A_Login {
 */
     }
 
-    @Test (enabled = false)
-    public void Test_Two (){
-        driver.findElement(By.xpath("//h4[text()='14']")).click();
-        driver.findElement(By.xpath("//input [@type ='radio']")).click();
+    @Test (enabled = true)
+    public void Test_Two () throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        WebElement element1 = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h4[text()='19']")));
+        element1.click();
+
+        WebElement element2 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input [@type ='radio']")));
+        element2.click();
+
         driver.findElement(By.xpath("//button [text()='Confirm']")).click();
+
+      //  driver.findElement(By.xpath("(//button [text()='+'])[2]")).click();
+
+        driver.findElements(By.xpath("//button [text()='+']")).get(1).click();
+
+        driver.findElement(By.xpath("//button [text()='Next']")).click();
+
+        WebElement element3 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input [@id = 'first-name-input-0']")));
+        element3.sendKeys("Male");
+
+        WebElement element4 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input [@id = 'last-name-input-0']")));
+        element4.sendKeys("One");
+
+        WebElement element5 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input [@id = 'whatsappNumber-input-0']")));
+        element5.sendKeys("222");
+
+        driver.findElement(By.xpath("//button [text()='Proceed To Payment']")).click();
+
+        WebElement element6 = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span [text()='This number is associated with a Male account. Please use the correct gender.']")));
+
+        Assert.assertTrue(element6.isDisplayed());
+    }
+
+    @Test (enabled = true)
+    public void Test_Three () throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        WebElement element1 = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h4[text()='19']")));
+        element1.click();
+
+        WebElement element2 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input [@type ='radio']")));
+        element2.click();
+
+        driver.findElement(By.xpath("//button [text()='Confirm']")).click();
+
+        //  driver.findElement(By.xpath("(//button [text()='+'])[2]")).click();
+
+        driver.findElements(By.xpath("//button [text()='+']")).getFirst().click();
+
+        driver.findElement(By.xpath("//button [text()='Next']")).click();
+
+        WebElement element3 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input [@id = 'first-name-input-0']")));
+        element3.sendKeys("Female");
+
+        WebElement element4 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input [@id = 'last-name-input-0']")));
+        element4.sendKeys("One");
+
+        WebElement element5 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input [@id = 'whatsappNumber-input-0']")));
+        element5.sendKeys("111");
+
+        driver.findElement(By.xpath("//button [text()='Proceed To Payment']")).click();
+
+        WebElement element6 = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span [text()='This number is associated with a Female account. Please use the correct gender.']")));
+
+        Assert.assertTrue(element6.isDisplayed());
     }
 
     @AfterMethod
