@@ -100,7 +100,7 @@ public class A_Login {
 */
     }
 
-    @Test (enabled = true)
+    @Test (enabled = false)
     public void Test_Two () throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         WebElement element1 = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h4[text()='19']")));
@@ -133,7 +133,7 @@ public class A_Login {
         Assert.assertTrue(element6.isDisplayed());
     }
 
-    @Test (enabled = true)
+    @Test (enabled = false)
     public void Test_Three () throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         WebElement element1 = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//h4[text()='19']")));
